@@ -15,14 +15,14 @@ class Pelayanan extends MY_Controller
       'm_pelayanan'
     ));
 
-    $this->menu_id = '99.02';
+    $this->menu_id = '03';
     $this->menu = $this->m_config->get_menu($this->menu_id);
     if ($this->menu == null) redirect(site_url() . '/front/error_403');
 
     //cookie 
     $this->cookie = get_cookie_menu($this->menu_id);
     if ($this->cookie['search'] == null) $this->cookie['search'] = array('term' => '');
-    if ($this->cookie['order'] == null) $this->cookie['order'] = array('field' => 'pelayanan_name', 'type' => 'asc');
+    if ($this->cookie['order'] == null) $this->cookie['order'] = array('field' => 'masuk_rs_tgl', 'type' => 'desc');
     if ($this->cookie['per_page'] == null) $this->cookie['per_page'] = 10;
     if ($this->cookie['cur_page'] == null) 0;
   }
@@ -57,6 +57,7 @@ class Pelayanan extends MY_Controller
     }
     $data['id'] = $id;
     $data['menu'] = $this->menu;
+    $data['all_user'] = $this->m_user->all_data_by_role_name();
     $this->render('form', $data);
   }
 
@@ -67,21 +68,12 @@ class Pelayanan extends MY_Controller
     if (!isset($data['is_active'])) {
       $data['is_active'] = 0;
     }
-    $cek = $this->m_pelayanan->by_field('pelayanan_name', $data['pelayanan_name']);
     if ($id == null) {
-      if ($cek != null) {
-        $this->session->set_flashdata('flash_error', 'Nama sudah ada di sistem.');
-        redirect(site_url() . '/' .  $this->menu['controller']  . '/form/');
-      }
       $data['pelayanan_id'] = $this->uuid->v4();
       $this->m_pelayanan->save($data, $id);
       create_log(2, $this->menu['menu_name']);
       $this->session->set_flashdata('flash_success', 'Data berhasil ditambahkan.');
     } else {
-      if ($data['old'] != $data['pelayanan_name'] && $cek != null) {
-        $this->session->set_flashdata('flash_error', 'Nama sudah ada di sistem.');
-        redirect(site_url() . '/' . $this->menu['controller'] . '/form/' . $id);
-      }
       unset($data['old']);
       $this->m_pelayanan->save($data, $id);
       create_log(3, $this->menu['menu_name']);
@@ -145,40 +137,16 @@ class Pelayanan extends MY_Controller
     redirect(site_url() . '/' . $this->menu['controller'] . '/' . $this->menu['url'] . '/' . $this->cookie['cur_page']);
   }
 
-  public function authorization($id = null)
-  {
-    ($id == null) ? authorize($this->menu, '_create') : authorize($this->menu, '_update');
-    if ($id == null) {
-      create_log(2, $this->menu['menu_name']);
-      $data['main'] = null;
-    } else {
-      create_log(3, $this->menu['menu_name']);
-      $data['main'] = $this->m_pelayanan->by_field('pelayanan_id', $id);
-    }
-    $data['id'] = $id;
-    $data['menu'] = $this->menu;
-    $data['menu_list'] = $this->m_pelayanan->menu_list($id);
-    $this->render('authorization', $data);
-  }
-
-  public function authorization_save($id)
-  {
-    $data = html_escape($this->input->post());
-    $this->m_pelayanan->authorization_save($data, $id);
-    $this->session->set_flashdata('flash_success', "Data berhasil disimpan");
-    redirect(site_url() . '/' . $this->menu['controller'] . '/' . $this->menu['url'] . '/' . $this->cookie['cur_page']);
-  }
-
   public function ajax($type = null, $id = null)
   {
     if ($type == 'check_id') {
       $data = $this->input->post();
-      $cek = $this->m_pelayanan->by_field('pelayanan_name', $data['pelayanan_name']);
+      $cek = $this->m_pelayanan->by_field('pelayanan_id', $data['pelayanan_id']);
       $old = $this->m_pelayanan->by_field('pelayanan_id', $id);
       if ($id == null) {
         echo ($cek != null) ? 'false' : 'true';
       } else {
-        echo ($cek != null) ? (($cek['pelayanan_name'] == $old['pelayanan_name']) ? 'true' : 'false') : 'true';
+        echo ($cek != null) ? (($cek['pelayanan_id'] == $old['pelayanan_id']) ? 'true' : 'false') : 'true';
       }
     }
   }

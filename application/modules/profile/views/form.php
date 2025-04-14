@@ -30,70 +30,70 @@
               <div class="card-body">
                 <div class="flash-error" data-flasherror="<?= $this->session->flashdata('flash_error') ?>"></div>
                 <h5>Aplikasi</h5>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Nama Aplikasi <span class="text-danger">*</span></label>
                   <div class="col-sm-4">
                     <input type="text" class="form-control form-control-sm" name="app_name" id="app_name" value="<?= @$main['app_name'] ?>" required>
                   </div>
                 </div>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Singkatan <span class="text-danger">*</span></label>
                   <div class="col-sm-2">
                     <input type="text" class="form-control form-control-sm" name="short_name" id="short_name" value="<?= @$main['short_name'] ?>" required>
                   </div>
                 </div>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Deskripsi <span class="text-danger">*</span></label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control form-control-sm" name="description" id="description" value="<?= @$main['description'] ?>" required>
                   </div>
                 </div>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Tahun Pembuatan <span class="text-danger">*</span></label>
                   <div class="col-sm-2">
                     <input type="text" class="form-control form-control-sm" name="start_year" id="start_year" value="<?= @$main['start_year'] ?>" required>
                   </div>
                 </div>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Versi <span class="text-danger">*</span></label>
                   <div class="col-sm-2">
                     <input type="text" class="form-control form-control-sm" name="version" id="version" value="<?= @$main['version'] ?>" required>
                   </div>
                 </div>
                 <h5>Perusahaan / Instansi</h5>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Perusahaan / Instansi <span class="text-danger">*</span></label>
                   <div class="col-sm-4">
                     <input type="text" class="form-control form-control-sm" name="company_name" id="company_name" value="<?= @$main['company_name'] ?>" required>
                   </div>
                 </div>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Alamat <span class="text-danger">*</span></label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control form-control-sm" name="address" id="address" value="<?= @$main['address'] ?>" required>
                   </div>
                 </div>
                 <h5>Kontak</h5>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Telpon <span class="text-danger">*</span></label>
                   <div class="col-sm-3">
                     <input type="text" class="form-control form-control-sm" name="phone" id="phone" value="<?= @$main['phone'] ?>" required>
                   </div>
                 </div>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Fax <span class="text-danger">*</span></label>
                   <div class="col-sm-3">
                     <input type="text" class="form-control form-control-sm" name="fax" id="fax" value="<?= @$main['fax'] ?>" required>
                   </div>
                 </div>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Email <span class="text-danger">*</span></label>
                   <div class="col-sm-3">
                     <input type="text" class="form-control form-control-sm" name="email" id="email" value="<?= @$main['email'] ?>" required>
                   </div>
                 </div>
                 <h5>Logo</h5>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="url" class="col-sm-2 col-form-label text-right">Logo</label>
                   <div class="col-sm-4 ">
                     <input type="file" class="" name="logo" id="logo">

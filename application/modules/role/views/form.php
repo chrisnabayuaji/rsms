@@ -33,27 +33,23 @@
                 <?php if ($id != null) : ?>
                   <input type="hidden" class="form-control form-control-sm" name="old" id="old" value="<?= @$main['role_name'] ?>" required>
                 <?php endif; ?>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Nama Role <span class="text-danger">*</span></label>
                   <div class="col-sm-4">
                     <input type="text" class="form-control form-control-sm" name="role_name" id="role_name" value="<?= @$main['role_name'] ?>" required>
                   </div>
                 </div>
-                <div id="icon-container" class="form-group row mb-2">
+                <div id="icon-container" class="form-group row mb-1">
                   <label for="icon" class="col-sm-2 col-form-label text-right">Deskripsi <span class="text-danger">*</span></label>
                   <div class="col-sm-6">
                     <input type="text" class="form-control form-control-sm" name="description" id="description" value="<?= @$main['description'] ?>" required>
                   </div>
                 </div>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="url" class="col-sm-2 col-form-label text-right">Aktif</label>
                   <div class="col-sm-3">
                     <div class="pretty p-icon mt-2">
-                      <input class="icheckbox" type="checkbox" name="is_active" id="is_active" value="1" <?php if (@$main) {
-                                                                                                            echo (@$main['is_active']) ? 'checked' : '';
-                                                                                                          } else {
-                                                                                                            echo 'checked';
-                                                                                                          } ?>>
+                      <input class="icheckbox" type="checkbox" name="is_active" id="is_active" value="1" <?= @$main ? (@$main['is_active'] == 1 ? 'checked' : '') : 'checked' ?>>
                       <div class="state">
                         <i class="icon fas fa-check"></i><label></label>
                       </div>

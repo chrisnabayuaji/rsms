@@ -33,19 +33,19 @@
                 <?php if ($id != null) : ?>
                   <input type="hidden" class="form-control form-control-sm" name="old" id="old" value="<?= @$main['role_id'] ?>" required>
                 <?php endif; ?>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Nama Role <span class="text-danger">*</span></label>
                   <div class="col-sm-4">
                     <input type="text" class="form-control form-control-sm" name="role_name" id="role_name" value="<?= @$main['role_name'] ?>" required readonly>
                   </div>
                 </div>
-                <div id="icon-container" class="form-group row mb-2">
+                <div id="icon-container" class="form-group row mb-1">
                   <label for="icon" class="col-sm-2 col-form-label text-right">Deskripsi <span class="text-danger">*</span></label>
                   <div class="col-sm-6">
                     <input type="text" class="form-control form-control-sm" name="description" id="description" value="<?= @$main['description'] ?>" required readonly>
                   </div>
                 </div>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="url" class="col-sm-2 col-form-label text-right">Menu</label>
                   <div class="col-sm-10">
                     <table class="table table-striped table-bordered table-sm">

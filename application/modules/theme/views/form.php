@@ -28,7 +28,7 @@
             </div>
             <div class="card-body">
               <div class="flash-error" data-flasherror="<?= $this->session->flashdata('flash_error') ?>"></div>
-              <div class="form-group row mb-2">
+              <div class="form-group row mb-1">
                 <label for="logo" class="col-sm-2 col-form-label text-right">Navbar Variants</label>
                 <div class="col-sm-5">
                   <div class="d-flex flex-wrap mb-3">
@@ -52,7 +52,7 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group row mb-2">
+              <div class="form-group row mb-1">
                 <label for="logo" class="col-sm-2 col-form-label text-right">Brand Logo Variants</label>
                 <div class="col-sm-5">
                   <div class="d-flex flex-wrap mb-3">
@@ -76,7 +76,7 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group row mb-2">
+              <div class="form-group row mb-1">
                 <label for="logo" class="col-sm-2 col-form-label text-right">Sidebar Variants</label>
                 <div class="col-sm-5">
                   <div class="d-flex flex-wrap mb-3">
@@ -85,7 +85,7 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group row mb-2">
+              <div class="form-group row mb-1">
                 <label for="logo" class="col-sm-2 col-form-label text-right">Sidebar Accents</label>
                 <div class="col-sm-5">
                   <div class="d-flex flex-wrap mb-3">
@@ -109,7 +109,7 @@
                   </div>
                 </div>
               </div>
-              <div id="access-container" class="form-group row mb-2">
+              <div id="access-container" class="form-group row mb-1">
                 <label for="url" class="col-sm-2 col-form-label text-right">Element</label>
                 <div class="col-sm-3">
                   <div class="pretty p-icon">

@@ -33,7 +33,7 @@
                 <?php if ($id != null) : ?>
                   <input type="hidden" class="form-control form-control-sm" name="old" id="old" value="<?= @$main['user_name'] ?>" required>
                 <?php endif; ?>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="role_id" class="col-sm-2 col-form-label text-right">Role <span class="text-danger">*</span></label>
                   <div class="col-sm-2">
                     <select class="form-control form-control-sm select2" name="role_id" id="role_id" required>
@@ -44,45 +44,45 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Nama Lengkap <span class="text-danger">*</span></label>
                   <div class="col-sm-4">
                     <input type="text" class="form-control form-control-sm" name="user_fullname" id="user_fullname" value="<?= @$main['user_fullname'] ?>" required>
                   </div>
                 </div>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Nama Pengguna <span class="text-danger">*</span></label>
                   <div class="col-sm-3">
                     <input type="text" class="form-control form-control-sm" name="user_name" id="user_name" value="<?= @$main['user_name'] ?>" required>
                   </div>
                 </div>
-                <!-- <div class="form-group row mb-2">
+                <!-- <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Email </label>
                   <div class="col-sm-3">
                     <input type="email" class="form-control form-control-sm" name="email" id="email" value="<?= @$main['email'] ?>">
                   </div>
                 </div>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Telepon </label>
                   <div class="col-sm-3">
                     <input type="text" class="form-control form-control-sm" name="phone" id="phone" value="<?= @$main['phone'] ?>">
                   </div>
                 </div> -->
                 <?php if ($id == null) : ?>
-                  <div class="form-group row mb-2">
+                  <div class="form-group row mb-1">
                     <label for="icon" class="col-sm-2 col-form-label text-right">Password <span class="text-danger">*</span></label>
                     <div class="col-sm-4">
                       <input type="password" class="form-control form-control-sm" name="password" id="password" value="<?= @$main['password'] ?>" required>
                     </div>
                   </div>
-                  <div class="form-group row mb-2">
+                  <div class="form-group row mb-1">
                     <label for="icon" class="col-sm-2 col-form-label text-right">Ulang Password <span class="text-danger">*</span></label>
                     <div class="col-sm-4">
                       <input type="password" class="form-control form-control-sm" name="password_confirm" id="password_confirm" value="<?= @$main['password_agian'] ?>" required>
                     </div>
                   </div>
                 <?php endif; ?>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Photo</label>
                   <div class="col-sm-3">
                     <input type="file" class="" name="photo" id="photo">
@@ -90,22 +90,18 @@
                   </div>
                 </div>
                 <?php if ($id != null) : ?>
-                  <div class="form-group row mb-2">
+                  <div class="form-group row mb-1">
                     <label for="menu" class="col-sm-2 col-form-label text-right"></label>
                     <div class="col-sm-2">
                       <img src="<?= base_url() ?>images/users/<?= @$main['photo'] ?>" alt="<?= @$main['photo'] ?>" class="img-thumbnail">
                     </div>
                   </div>
                 <?php endif; ?>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="url" class="col-sm-2 col-form-label text-right">Aktif</label>
                   <div class="col-sm-3">
                     <div class="pretty p-icon mt-2">
-                      <input class="icheckbox" type="checkbox" name="is_active" id="is_active" value="1" <?php if (@$main) {
-                                                                                                            echo (@$main['is_active']) ? 'checked' : '';
-                                                                                                          } else {
-                                                                                                            echo 'checked';
-                                                                                                          } ?>>
+                      <input class="icheckbox" type="checkbox" name="is_active" id="is_active" value="1" <?= @$main ? (@$main['is_active'] == 1 ? 'checked' : '') : 'checked' ?>>
                       <div class="state">
                         <i class="icon fas fa-check"></i><label></label>
                       </div>
@@ -136,13 +132,13 @@
                 <div class="card-body">
                   <div class="flash-error" data-flasherror="<?= $this->session->flashdata('flash_error') ?>"></div>
                   <input type="hidden" class="form-control form-control-sm" name="user_id" id="user_id" value="<?= @$main['user_id'] ?>" required>
-                  <div class="form-group row mb-2">
+                  <div class="form-group row mb-1">
                     <label for="icon" class="col-sm-2 col-form-label text-right">Password <span class="text-danger">*</span></label>
                     <div class="col-sm-4">
                       <input type="password" class="form-control form-control-sm" name="password" id="password" value="<?= @$main['password'] ?>" required>
                     </div>
                   </div>
-                  <div class="form-group row mb-2">
+                  <div class="form-group row mb-1">
                     <label for="icon" class="col-sm-2 col-form-label text-right">Ulang Password <span class="text-danger">*</span></label>
                     <div class="col-sm-4">
                       <input type="password" class="form-control form-control-sm" name="password_confirm" id="password_confirm" value="<?= @$main['password_agian'] ?>" required>

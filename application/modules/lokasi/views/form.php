@@ -29,7 +29,7 @@
             <form id="form" action="<?= site_url() . '/' . $menu['controller'] . '/save/' . $id ?>" method="post" autocomplete="off">
               <div class="card-body">
                 <div class="flash-error" data-flasherror="<?= $this->session->flashdata('flash_error') ?>"></div>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Kode Lokasi <span class="text-danger">*</span></label>
                   <div class="col-sm-2">
                     <input type="text" class="form-control form-control-sm" name="lokasi_id" id="lokasi_id" value="<?= @$main['lokasi_id'] ?>" required>
@@ -38,21 +38,17 @@
                 <?php if ($id != null) : ?>
                   <input type="hidden" class="form-control form-control-sm" name="old" id="old" value="<?= @$main['lokasi_id'] ?>" required>
                 <?php endif; ?>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Nama Lokasi <span class="text-danger">*</span></label>
                   <div class="col-sm-4">
                     <input type="text" class="form-control form-control-sm" name="lokasi_name" id="lokasi_name" value="<?= @$main['lokasi_name'] ?>" required>
                   </div>
                 </div>
-                <div class="form-group row mb-2">
+                <div class="form-group row mb-1">
                   <label for="url" class="col-sm-2 col-form-label text-right">Aktif</label>
                   <div class="col-sm-3">
                     <div class="pretty p-icon mt-2">
-                      <input class="icheckbox" type="checkbox" name="is_active" id="is_active" value="1" <?php if (@$main) {
-                                                                                                            echo (@$main['is_active']) ? 'checked' : '';
-                                                                                                          } else {
-                                                                                                            echo 'checked';
-                                                                                                          } ?>>
+                      <input class="icheckbox" type="checkbox" name="is_active" id="is_active" value="1" <?= @$main ? (@$main['is_active'] == 1 ? 'checked' : '') : 'checked' ?>>
                       <div class="state">
                         <i class="icon fas fa-check"></i><label></label>
                       </div>

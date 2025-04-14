@@ -81,9 +81,9 @@
                               </div>
                             </div>
                           </th>
-                          <th class="text-center" width="70">Aksi</th>
-                          <th class="text-center" width="200"><?= table_sort($menu['menu_id'], 'Nama', 'role_name', $cookie['order']) ?></th>
-                          <th class="text-center">Deskripsi</th>
+                          <th class="text-center" width="60">Aksi</th>
+                          <th class="text-center" width="70"><?= table_sort($menu['menu_id'], 'Kode', 'lokasi_id', $cookie['order']) ?></th>
+                          <th class="text-center" width=""><?= table_sort($menu['menu_id'], 'Nama', 'lokasi_name', $cookie['order']) ?></th>
                           <th class="text-center" width="70"><?= table_sort($menu['menu_id'], 'Status', 'is_active', $cookie['order']) ?></th>
                         </tr>
                       </thead>
@@ -102,7 +102,7 @@
                                 <td class="text-center"><?= $cookie['cur_page'] + ($i++) ?></td>
                                 <td class="text-center">
                                   <div class="pretty p-icon">
-                                    <input class="checkitem" type="checkbox" value="<?= $r['role_id'] ?>" name="checkitem[]" onclick="checkItem();" />
+                                    <input class="checkitem" type="checkbox" value="<?= $r['lokasi_id'] ?>" name="checkitem[]" onclick="checkItem();" />
                                     <div class="state">
                                       <i class="icon fas fa-check"></i><label></label>
                                     </div>
@@ -110,25 +110,22 @@
                                 </td>
                                 <td class="text-center">
                                   <?php if ($menu['_update'] == 1) : ?>
-                                    <a class="text-success mr-1" href="<?= site_url() . '/' . $menu['controller'] . '/authorization/' . $r['role_id'] ?>"><i class="fas fa-user-secret"></i></a>
-                                  <?php endif; ?>
-                                  <?php if ($menu['_update'] == 1) : ?>
-                                    <a class="text-warning mr-1" href="<?= site_url() . '/' . $menu['controller'] . '/form/' . $r['role_id'] ?>"><i class="fas fa-pencil-alt"></i></a>
+                                    <a class="text-warning mr-1" href="<?= site_url() . '/' . $menu['controller'] . '/form/' . $r['lokasi_id'] ?>"><i class="fas fa-pencil-alt"></i></a>
                                   <?php endif; ?>
                                   <?php if ($menu['_delete'] == 1) : ?>
-                                    <a class="text-danger btn-delete" href="<?= site_url() . '/' . $menu['controller'] . '/delete/' . $r['role_id'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                    <a class="text-danger btn-delete" href="<?= site_url() . '/' . $menu['controller'] . '/delete/' . $r['lokasi_id'] ?>"><i class="fas fa-trash-alt"></i></a>
                                   <?php endif; ?>
                                 </td>
-                                <td><?= $r['role_name'] ?></td>
-                                <td><?= $r['description'] ?></td>
+                                <td><?= $r['lokasi_id'] ?></td>
+                                <td><?= $r['lokasi_name'] ?></td>
                                 <td class="text-center td-status">
                                   <?php if ($menu['_update'] == 1) : ?>
                                     <?php if ($r['is_active'] == 1) : ?>
-                                      <a href="<?= site_url() . '/' . $menu['controller'] . '/status/disable/' . $r['role_id'] ?>">
+                                      <a href="<?= site_url() . '/' . $menu['controller'] . '/status/disable/' . $r['lokasi_id'] ?>">
                                         <i class="icon-status fas fa-toggle-on text-success"></i>
                                       </a>
                                     <?php else : ?>
-                                      <a href="<?= site_url() . '/' . $menu['controller'] . '/status/enable/' . $r['role_id'] ?>">
+                                      <a href="<?= site_url() . '/' . $menu['controller'] . '/status/enable/' . $r['lokasi_id'] ?>">
                                         <i class="icon-status fas fa-toggle-off text-gray"></i>
                                       </a>
                                     <?php endif; ?>

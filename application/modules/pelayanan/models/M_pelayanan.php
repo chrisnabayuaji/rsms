@@ -8,7 +8,7 @@ class M_pelayanan extends CI_Model
   {
     $where = "WHERE a.is_deleted = 0 ";
     if (@$cookie['search']['term'] != '') {
-      $where .= "AND a.pelayanan_name LIKE '%" . $this->db->escape_like_str($cookie['search']['term']) . "%' ";
+      $where .= "AND a.pasien_nm LIKE '%" . $this->db->escape_like_str($cookie['search']['term']) . "%' ";
     }
     return $where;
   }
