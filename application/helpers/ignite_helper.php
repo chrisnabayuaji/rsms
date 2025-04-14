@@ -3,7 +3,7 @@
 if (!function_exists('authorize')) {
   function authorize($menu, $field)
   {
-    if ($menu[$field] == false) redirect(site_url() . '/my_error/error_403');
+    if ($menu[$field] == false) redirect(site_url() . '/front/error_403');
   }
 }
 

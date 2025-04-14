@@ -14,7 +14,7 @@ class Dashboard extends MY_Controller {
 
     $this->menu_id = '01';
 		$this->menu = $this->m_config->get_menu($this->menu_id);
-		if ($this->menu == null) redirect(site_url().'/my_error/error_403');
+		if ($this->menu == null) redirect(site_url().'/front/error_403');
 	}
 
   public function index()
