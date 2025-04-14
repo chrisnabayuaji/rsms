@@ -29,7 +29,7 @@
             <form id="form" action="<?= site_url() . '/' . $menu['controller'] . '/save/' . $id ?>" method="post" autocomplete="off">
               <div class="card-body">
                 <div class="flash-error" data-flasherror="<?= $this->session->flashdata('flash_error') ?>"></div>
-                <div class="form-group row">
+                <div class="form-group row mb-2">
                   <label for="type" class="col-sm-2 col-form-label text-right">Tipe</label>
                   <div class="col-sm-2">
                     <select class="form-control form-control-sm select2-hidden" name="type" id="type">
@@ -39,7 +39,7 @@
                     </select>
                   </div>
                 </div>
-                <div id="parent-container" class="form-group row">
+                <div id="parent-container" class="form-group row mb-2">
                   <label for="parent_id" class="col-sm-2 col-form-label text-right">Induk</label>
                   <div class="col-sm-4">
                     <select class="form-control form-control-sm select2" name="parent_id" id="parent_id">
@@ -50,7 +50,7 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row mb-2">
                   <label for="id" class="col-sm-2 col-form-label text-right">Kode <span class="text-danger">*</span></label>
                   <div class="col-sm-2">
                     <input type="text" class="form-control form-control-sm" name="menu_id" id="menu_id" value="<?= @$main['menu_id'] ?>" required>
@@ -59,31 +59,31 @@
                     <?php endif; ?>
                   </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row mb-2">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Menu <span class="text-danger">*</span></label>
                   <div class="col-sm-4">
                     <input type="text" class="form-control form-control-sm" name="menu_name" id="menu_name" value="<?= @$main['menu_name'] ?>" required>
                   </div>
                 </div>
-                <div id="icon-container" class="form-group row">
+                <div id="icon-container" class="form-group row mb-2">
                   <label for="icon" class="col-sm-2 col-form-label text-right">Ikon <span class="text-danger">*</span></label>
                   <div class="col-sm-2">
                     <input type="text" class="form-control form-control-sm" name="icon" id="icon" value="<?= @$main['icon'] ?>" required>
                   </div>
                 </div>
-                <div id="controller-container" class="form-group row">
+                <div id="controller-container" class="form-group row mb-2">
                   <label for="controller" class="col-sm-2 col-form-label text-right">Controller <span class="text-danger">*</span></label>
                   <div class="col-sm-3">
                     <input type="text" class="form-control form-control-sm" name="controller" id="controller" value="<?= @$main['controller'] ?>" required>
                   </div>
                 </div>
-                <div id="url-container" class="form-group row">
+                <div id="url-container" class="form-group row mb-2">
                   <label for="url" class="col-sm-2 col-form-label text-right">Url <span class="text-danger">*</span></label>
                   <div class="col-sm-3">
                     <input type="text" class="form-control form-control-sm" name="url" id="url" value="<?= @$main['url'] ?>" required>
                   </div>
                 </div>
-                <div id="access-container" class="form-group row">
+                <div id="access-container" class="form-group row mb-2">
                   <label for="url" class="col-sm-2 col-form-label text-right">Akses <span class="text-danger">*</span></label>
                   <div class="col-sm-3">
                     <div class="pretty p-icon">
@@ -118,7 +118,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row mb-2">
                   <label for="url" class="col-sm-2 col-form-label text-right">Aktif</label>
                   <div class="col-sm-3">
                     <div class="pretty p-icon">
