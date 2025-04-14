@@ -16,7 +16,7 @@ class App extends MY_Controller
   {
     $menu_id = $menu_id;
     $this->menu = $this->m_config->get_menu($menu_id);
-    if ($this->menu == null) redirect(site_url() . '/error/error_403');
+    if ($this->menu == null) redirect(site_url() . '/my_error/error_403');
   }
 
   public function search($menu_id)
@@ -24,7 +24,7 @@ class App extends MY_Controller
     $this->auth($menu_id);
     $menu = $this->m_config->get_menu($menu_id);
     $data = $this->input->post(null, true);
-    if ($data == null) redirect(site_url() . '/error/error_403');
+    if ($data == null) redirect(site_url() . '/my_error/error_403');
     $cookie = get_cookie_menu($menu_id);
     $cookie['search'] = $data;
     set_cookie_menu($menu_id, $cookie);
@@ -35,7 +35,7 @@ class App extends MY_Controller
   {
     $this->auth($menu_id);
     $menu = $this->m_config->get_menu($menu_id);
-    if ($field == null || $type == null) redirect(site_url() . '/error/error_403');
+    if ($field == null || $type == null) redirect(site_url() . '/my_error/error_403');
     $cookie = get_cookie_menu($menu_id);
     $cookie['order'] = array(
       'field' => $field,

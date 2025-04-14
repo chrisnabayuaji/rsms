@@ -17,7 +17,7 @@ class Menu extends MY_Controller
 
     $this->menu_id = '99.01';
     $this->menu = $this->m_config->get_menu($this->menu_id);
-    if ($this->menu == null) redirect(site_url() . '/error/error_403');
+    if ($this->menu == null) redirect(site_url() . '/my_error/error_403');
 
     //cookie 
     $this->cookie = get_cookie_menu($this->menu_id);
@@ -85,7 +85,7 @@ class Menu extends MY_Controller
     }
     $cek = $this->m_menu->by_field('menu_id', $data['menu_id']);
     if ($id == null) {
-      if ($this->menu['_create'] == 0) redirect(site_url() . '/error/error_403');
+      if ($this->menu['_create'] == 0) redirect(site_url() . '/my_error/error_403');
       if ($cek != null) {
         $this->session->set_flashdata('flash_error', 'Kode sudah ada di sistem.');
         redirect(site_url() . '/' .  $this->menu['controller']  . '/form/');
@@ -95,7 +95,7 @@ class Menu extends MY_Controller
       create_log(2, $this->menu['menu_name']);
       $this->session->set_flashdata('flash_success', 'Data berhasil ditambahkan.');
     } else {
-      if ($this->menu['_update'] == 0) redirect(site_url() . '/error/error_403');
+      if ($this->menu['_update'] == 0) redirect(site_url() . '/my_error/error_403');
       if ($data['old'] != $data['menu_id'] && $cek != null) {
         $this->session->set_flashdata('flash_error', 'Kode sudah ada di sistem.');
         redirect(site_url() . '/' . $this->menu['controller'] . '/form/' . $id);

@@ -18,7 +18,7 @@ class User extends MY_Controller
 
     $this->menu_id = '99.03';
     $this->menu = $this->m_config->get_menu($this->menu_id);
-    if ($this->menu == null) redirect(site_url() . '/error/error_403');
+    if ($this->menu == null) redirect(site_url() . '/my_error/error_403');
 
     //cookie 
     $this->cookie = get_cookie_menu($this->menu_id);
