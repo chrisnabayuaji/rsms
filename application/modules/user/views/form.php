@@ -56,7 +56,7 @@
                     <input type="text" class="form-control form-control-sm" name="user_name" id="user_name" value="<?= @$main['user_name'] ?>" required>
                   </div>
                 </div>
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                   <label for="menu" class="col-sm-2 col-form-label text-right">Email </label>
                   <div class="col-sm-3">
                     <input type="email" class="form-control form-control-sm" name="email" id="email" value="<?= @$main['email'] ?>">
@@ -67,7 +67,7 @@
                   <div class="col-sm-3">
                     <input type="text" class="form-control form-control-sm" name="phone" id="phone" value="<?= @$main['phone'] ?>">
                   </div>
-                </div>
+                </div> -->
                 <?php if ($id == null) : ?>
                   <div class="form-group row">
                     <label for="icon" class="col-sm-2 col-form-label text-right">Password <span class="text-danger">*</span></label>

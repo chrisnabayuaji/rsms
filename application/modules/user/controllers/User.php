@@ -77,7 +77,11 @@ class User extends MY_Controller
       }
       $data['user_id'] = $this->uuid->v4();
       $data['hash'] = password_hash($data['password'], PASSWORD_BCRYPT, ['cost' => 12]);
-      $data['photo'] = $this->_uploadImage();
+      if (!empty($_FILES["photo"]["name"])) {
+        $data['photo'] = $this->_uploadImage();
+      } else {
+        $data['photo'] = 'no-photo.png';
+      }
       unset($data['password'], $data['password_confirm'], $data['old_photo']);
       $this->m_user->save($data, $id);
       create_log(2, $this->menu['menu_name']);
