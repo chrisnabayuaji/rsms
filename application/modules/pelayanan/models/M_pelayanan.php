@@ -8,7 +8,10 @@ class M_pelayanan extends CI_Model
   {
     $where = "WHERE a.is_deleted = 0 ";
     if (@$cookie['search']['term'] != '') {
-      $where .= "AND a.pasien_nm LIKE '%" . $this->db->escape_like_str($cookie['search']['term']) . "%' ";
+      $where .= "AND a.pasien_name LIKE '%" . $this->db->escape_like_str($cookie['search']['term']) . "%' ";
+    }
+    if (@$cookie['search']['bangsal_id'] != '') {
+      $where .= "AND a.bangsal_id = '" . $this->db->escape_like_str($cookie['search']['bangsal_id']) . "' ";
     }
     return $where;
   }
@@ -16,7 +19,16 @@ class M_pelayanan extends CI_Model
   public function list_data($cookie)
   {
     $where = $this->where($cookie);
-    $sql = "SELECT * FROM pelayanan a 
+    $sql =
+      "SELECT 
+        a.*,
+        b.lokasi_name AS bangsal_name,
+        c.user_fullname AS dpjp_name,
+        d.user_fullname AS residen_name
+      FROM pelayanan a 
+      JOIN lokasi b ON a.bangsal_id = b.lokasi_id
+      JOIN user c ON a.dpjp_id = c.user_id
+      JOIN user d ON a.residen_id = d.user_id
       $where
       ORDER BY "
       . $cookie['order']['field'] . " " . $cookie['order']['type'] .

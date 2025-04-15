@@ -70,6 +70,7 @@ class User extends MY_Controller
       $data['is_active'] = 0;
     }
     $cek = $this->m_user->by_field('user_name', $data['user_name']);
+    $data['user_fullname'] = strtoupper($data['user_fullname']);
     if ($id == null) {
       if ($cek != null) {
         $this->session->set_flashdata('flash_error', 'Nama pengguna sudah ada di sistem.');

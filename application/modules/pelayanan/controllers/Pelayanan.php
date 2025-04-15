@@ -12,6 +12,8 @@ class Pelayanan extends MY_Controller
 
     $this->load->model(array(
       'config/m_config',
+      'user/m_user',
+      'lokasi/m_lokasi',
       'm_pelayanan'
     ));
 
@@ -41,6 +43,8 @@ class Pelayanan extends MY_Controller
     $data['pagination_info'] = pagination_info(count($data['main']), $this->cookie);
     //set pagination
     set_pagination($this->menu, $this->cookie);
+    //additonal 
+    $data['all_lokasi'] = $this->m_lokasi->all_data();
     //render
     $this->render('index', $data);
   }
@@ -57,7 +61,9 @@ class Pelayanan extends MY_Controller
     }
     $data['id'] = $id;
     $data['menu'] = $this->menu;
-    $data['all_user'] = $this->m_user->all_data_by_role_name();
+    $data['all_dpjp'] = $this->m_user->all_data_by_role_name('DPJP');
+    $data['all_residen'] = $this->m_user->all_data_by_role_name('RESIDEN');
+    $data['all_lokasi'] = $this->m_lokasi->all_data();
     $this->render('form', $data);
   }
 
@@ -68,6 +74,10 @@ class Pelayanan extends MY_Controller
     if (!isset($data['is_active'])) {
       $data['is_active'] = 0;
     }
+
+    $data['masuk_rs_tgl'] = reverse_date($data['masuk_rs_tgl'], '-', 'full_date');
+    $data['pasien_name'] = strtoupper($data['pasien_name']);
+
     if ($id == null) {
       $data['pelayanan_id'] = $this->uuid->v4();
       $this->m_pelayanan->save($data, $id);
@@ -85,7 +95,7 @@ class Pelayanan extends MY_Controller
   public function delete($id = null)
   {
     ($id == null) ? authorize($this->menu, '_create') : authorize($this->menu, '_update');
-    $this->m_pelayanan->delete($id);
+    $this->m_pelayanan->delete($id, false);
     create_log(4, $this->menu['menu_name']);
     $this->session->set_flashdata('flash_success', 'Data berhasil dihapus.');
     redirect(site_url() . '/' . $this->menu['controller'] . '/' . $this->menu['url'] . '/' . $this->cookie['cur_page']);

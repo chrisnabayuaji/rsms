@@ -68,6 +68,7 @@ class Role extends MY_Controller
       $data['is_active'] = 0;
     }
     $cek = $this->m_role->by_field('role_name', $data['role_name']);
+    $data['role_name'] = strtoupper($data['role_name']);
     if ($id == null) {
       if ($cek != null) {
         $this->session->set_flashdata('flash_error', 'Nama sudah ada di sistem.');

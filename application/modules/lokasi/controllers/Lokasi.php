@@ -68,6 +68,7 @@ class Lokasi extends MY_Controller
       $data['is_active'] = 0;
     }
     $cek = $this->m_lokasi->by_field('lokasi_id', $data['lokasi_id']);
+    $data['lokasi_name'] = strtoupper($data['lokasi_name']);
     if ($id == null) {
       if ($cek != null) {
         $this->session->set_flashdata('flash_error', 'Kode sudah ada di sistem.');

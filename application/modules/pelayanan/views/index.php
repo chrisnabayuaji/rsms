@@ -27,14 +27,23 @@
               <h3 class="card-title">Daftar <?= $menu['menu_name'] ?></h3>
             </div>
             <div class="card-body">
-              <div class="row">
-                <div class="col-md-6">
-                  <?php if ($menu['_create'] == 1 || $menu['_update'] == 1) : ?>
-                    <a class="btn btn-sm btn-primary" href="<?= site_url() . '/' . $menu['controller'] . '/form' ?>"><i class="fas fa-plus-circle"></i> Tambah</a>
-                  <?php endif; ?>
-                </div>
-                <div class="col-md-3 offset-md-3">
-                  <form action="<?= site_url() . '/app/search/' . $menu['menu_id'] ?>" method="post" autocomplete="off">
+              <form action="<?= site_url() . '/app/search/' . $menu['menu_id'] ?>" method="post" autocomplete="off">
+                <div class="row">
+                  <div class="col-md-3">
+                    <?php if ($menu['_create'] == 1 || $menu['_update'] == 1) : ?>
+                      <a class="btn btn-sm btn-primary" href="<?= site_url() . '/' . $menu['controller'] . '/form' ?>"><i class="fas fa-plus-circle"></i> Tambah</a>
+                    <?php endif; ?>
+                  </div>
+                  <div class="col-md-3 offset-3">
+                    <select class="form-control form-control-sm select2" name="bangsal_id" id="bangsal_id">
+                      <option value="">-- Semua Bangsal --</option>
+                      <?php foreach ($all_lokasi as $r) : ?>
+                        <option value="<?= $r['lokasi_id'] ?>" <?= (@$cookie['search']['bangsal_id'] == $r['lokasi_id']) ? 'selected' : '' ?>><?= $r['lokasi_name'] ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+
                     <div class="input-group input-group-sm">
                       <input class="form-control" type="text" name="term" value="<?= @$cookie['search']['term'] ?>" placeholder="Pencarian">
                       <span class="input-group-append">
@@ -42,9 +51,9 @@
                         <a class="btn btn-default" href="<?= site_url() . '/app/reset/' . $menu['menu_id'] ?>"><i class="fas fa-sync-alt"></i></a>
                       </span>
                     </div>
-                  </form>
-                </div>
-              </div><!-- /.row -->
+                  </div>
+                </div><!-- /.row -->
+              </form>
               <div class="row mb-2 mt-2">
                 <div class="col-md-6">
                   <div class="input-group-prepend">
@@ -73,17 +82,14 @@
                       <thead>
                         <tr>
                           <th class="text-center" width="40">No.</th>
-                          <th class="text-center" width="10">
-                            <div class="pretty p-icon">
-                              <input class="checkall" type="checkbox" name="checkall" onclick="checkAll(this);" />
-                              <div class="state">
-                                <i class="icon fas fa-check"></i><label></label>
-                              </div>
-                            </div>
-                          </th>
-                          <th class="text-center" width="60">Aksi</th>
-                          <th class="text-center" width="70"><?= table_sort($menu['menu_id'], 'Kode', 'lokasi_id', $cookie['order']) ?></th>
-                          <th class="text-center" width=""><?= table_sort($menu['menu_id'], 'Nama', 'lokasi_name', $cookie['order']) ?></th>
+                          <th class="text-center" width="80">Aksi</th>
+                          <th class="text-center" width="120">Bangsal</th>
+                          <th class="text-center" width="60">Kamar</th>
+                          <th class="text-center" width="80"><?= table_sort($menu['menu_id'], 'No RM', 'rm_no', $cookie['order']) ?></th>
+                          <th class="text-center" width=""><?= table_sort($menu['menu_id'], 'Nama Pasien', 'pasien_name', $cookie['order']) ?></th>
+                          <th class="text-center" width="120">Umur</th>
+                          <th class="text-center" width="200">DPJP</th>
+                          <th class="text-center" width="200">Residen</th>
                           <th class="text-center" width="70"><?= table_sort($menu['menu_id'], 'Status', 'is_active', $cookie['order']) ?></th>
                         </tr>
                       </thead>
@@ -101,31 +107,31 @@
                               <tr>
                                 <td class="text-center"><?= $cookie['cur_page'] + ($i++) ?></td>
                                 <td class="text-center">
-                                  <div class="pretty p-icon">
-                                    <input class="checkitem" type="checkbox" value="<?= $r['lokasi_id'] ?>" name="checkitem[]" onclick="checkItem();" />
-                                    <div class="state">
-                                      <i class="icon fas fa-check"></i><label></label>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td class="text-center">
                                   <?php if ($menu['_update'] == 1) : ?>
-                                    <a class="text-warning mr-1" href="<?= site_url() . '/' . $menu['controller'] . '/form/' . $r['lokasi_id'] ?>"><i class="fas fa-pencil-alt"></i></a>
+                                    <a class="text-success mr-1" href="<?= site_url() . '/' . $menu['controller'] . '/detail/' . $r['pelayanan_id'] ?>"><i class="fas fa-list"></i></a>
+                                  <?php endif; ?>
+                                  <?php if ($menu['_update'] == 1) : ?>
+                                    <a class="text-warning mr-1" href="<?= site_url() . '/' . $menu['controller'] . '/form/' . $r['pelayanan_id'] ?>"><i class="fas fa-pencil-alt"></i></a>
                                   <?php endif; ?>
                                   <?php if ($menu['_delete'] == 1) : ?>
-                                    <a class="text-danger btn-delete" href="<?= site_url() . '/' . $menu['controller'] . '/delete/' . $r['lokasi_id'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                    <a class="text-danger btn-delete" href="<?= site_url() . '/' . $menu['controller'] . '/delete/' . $r['pelayanan_id'] ?>"><i class="fas fa-trash-alt"></i></a>
                                   <?php endif; ?>
                                 </td>
-                                <td><?= $r['lokasi_id'] ?></td>
-                                <td><?= $r['lokasi_name'] ?></td>
+                                <td><?= $r['bangsal_name'] ?></td>
+                                <td><?= $r['kamar_no'] ?></td>
+                                <td><?= $r['rm_no'] ?></td>
+                                <td><?= $r['pasien_name'] ?></td>
+                                <td><?= $r['umur_thn'] ?> Th <?= $r['umur_bln'] ?> Bl <?= $r['umur_hr'] ?> Hr</span></td>
+                                <td><?= $r['dpjp_name'] ?></td>
+                                <td><?= $r['residen_name'] ?></td>
                                 <td class="text-center td-status">
                                   <?php if ($menu['_update'] == 1) : ?>
                                     <?php if ($r['is_active'] == 1) : ?>
-                                      <a href="<?= site_url() . '/' . $menu['controller'] . '/status/disable/' . $r['lokasi_id'] ?>">
+                                      <a href="<?= site_url() . '/' . $menu['controller'] . '/status/disable/' . $r['pelayanan_id'] ?>">
                                         <i class="icon-status fas fa-toggle-on text-success"></i>
                                       </a>
                                     <?php else : ?>
-                                      <a href="<?= site_url() . '/' . $menu['controller'] . '/status/enable/' . $r['lokasi_id'] ?>">
+                                      <a href="<?= site_url() . '/' . $menu['controller'] . '/status/enable/' . $r['pelayanan_id'] ?>">
                                         <i class="icon-status fas fa-toggle-off text-gray"></i>
                                       </a>
                                     <?php endif; ?>
@@ -150,20 +156,7 @@
             <div class="card-footer">
               <div class="row">
                 <div class="col-md-6">
-                  <div class="input-group-prepend">
-                    <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                      Aksi
-                    </button>
-                    <div class="dropdown-menu">
-                      <?php if ($menu['_update'] == 1) : ?>
-                        <a class="dropdown-item" href="javascript:multipleAction('enable')">Aktif</a>
-                        <a class="dropdown-item" href="javascript:multipleAction('disable')">Non Aktif</a>
-                      <?php endif; ?>
-                      <?php if ($menu['_delete'] == 1) : ?>
-                        <a class="dropdown-item" href="javascript:multipleAction('delete')">Hapus</a>
-                      <?php endif; ?>
-                    </div>
-                  </div>
+
                 </div>
                 <div class="col-md-6 float-right">
                   <?php echo $this->pagination->create_links(); ?>

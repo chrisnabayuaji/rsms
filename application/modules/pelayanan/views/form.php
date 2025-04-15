@@ -29,20 +29,20 @@
             <form id="form" action="<?= site_url() . '/' . $menu['controller'] . '/save/' . $id ?>" method="post" autocomplete="off">
               <div class="card-body">
                 <div class="flash-error" data-flasherror="<?= $this->session->flashdata('flash_error') ?>"></div>
-                <input type="hidden" class="form-control form-control-sm" name="role_id" id="role_id" value="<?= @$main['role_id'] ?>" required>
+                <input type="hidden" class="form-control form-control-sm" name="pelayanan_id" id="pelayanan_id" value="<?= @$main['pelayanan_id'] ?>" required>
                 <?php if ($id != null) : ?>
                   <input type="hidden" class="form-control form-control-sm" name="old" id="old" value="<?= @$main['role_name'] ?>" required>
                 <?php endif; ?>
                 <div class="form-group row mb-1">
                   <label class="col-sm-2 col-form-label text-right">No Rekam Medis <span class="text-danger">*</span></label>
                   <div class="col-sm-2">
-                    <input type="text" class="form-control form-control-sm" name="no_rm" id="no_rm" value="<?= @$main['no_rm'] ?>" required>
+                    <input type="text" class="form-control form-control-sm" name="rm_no" id="rm_no" value="<?= @$main['rm_no'] ?>" required>
                   </div>
                 </div>
                 <div class="form-group row mb-1">
                   <label class="col-sm-2 col-form-label text-right">Nama Pasien <span class="text-danger">*</span></label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control form-control-sm" name="pasien_nm" id="pasien_nm" value="<?= @$main['pasien_nm'] ?>" required>
+                    <input type="text" class="form-control form-control-sm" name="pasien_name" id="pasien_name" value="<?= @$main['pasien_name'] ?>" required>
                   </div>
                 </div>
                 <div class="form-group row mb-1">
@@ -84,18 +84,46 @@
                 <div class="form-group row mb-1">
                   <label class="col-sm-2 col-form-label text-right">Tgl. Masuk RS <span class="text-danger">*</span></label>
                   <div class="col-sm-2">
-                    <input type="text" class="form-control form-control-sm datetimepicker" name="masuk_rs_tgl" id="masuk_rs_tgl" value="<?= @$main['masuk_rs_tgl'] ?>" required>
+                    <input type="text" class="form-control form-control-sm datetimepicker" name="masuk_rs_tgl" id="masuk_rs_tgl" value="<?= @reverse_date($main['masuk_rs_tgl'], '-', 'full_date') ?>" required>
                   </div>
                 </div>
                 <div class="form-group row mb-1">
-                  <label for="role_id" class="col-sm-2 col-form-label text-right">DPJP <span class="text-danger">*</span></label>
-                  <div class="col-sm-2">
-                    <select class="form-control form-control-sm select2" name="role_id" id="role_id" required>
+                  <label class="col-sm-2 col-form-label text-right">DPJP <span class="text-danger">*</span></label>
+                  <div class="col-sm-3">
+                    <select class="form-control form-control-sm select2" name="dpjp_id" id="dpjp_id" required>
                       <option value="">---</option>
-                      <?php foreach ($role as $r) : ?>
-                        <option value="<?= $r['role_id'] ?>" <?= (@$main['role_id'] == $r['role_id']) ? 'selected' : '' ?>><?= $r['role_name'] ?></option>
+                      <?php foreach ($all_dpjp as $r) : ?>
+                        <option value="<?= $r['user_id'] ?>" <?= (@$main['dpjp_id'] == $r['user_id']) ? 'selected' : '' ?>><?= $r['user_fullname'] ?></option>
                       <?php endforeach; ?>
                     </select>
+                  </div>
+                </div>
+                <div class="form-group row mb-1">
+                  <label class="col-sm-2 col-form-label text-right">Residen <span class="text-danger">*</span></label>
+                  <div class="col-sm-3">
+                    <select class="form-control form-control-sm select2" name="residen_id" id="residen_id" required>
+                      <option value="">---</option>
+                      <?php foreach ($all_residen as $r) : ?>
+                        <option value="<?= $r['user_id'] ?>" <?= (@$main['residen_id'] == $r['user_id']) ? 'selected' : '' ?>><?= $r['user_fullname'] ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row mb-1">
+                  <label class="col-sm-2 col-form-label text-right">Bangsal <span class="text-danger">*</span></label>
+                  <div class="col-sm-3">
+                    <select class="form-control form-control-sm select2" name="bangsal_id" id="bangsal_id" required>
+                      <option value="">---</option>
+                      <?php foreach ($all_lokasi as $r) : ?>
+                        <option value="<?= $r['lokasi_id'] ?>" <?= (@$main['bangsal_id'] == $r['lokasi_id']) ? 'selected' : '' ?>><?= $r['lokasi_name'] ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row mb-1">
+                  <label class="col-sm-2 col-form-label text-right">Nomor Kamar <span class="text-danger">*</span></label>
+                  <div class="col-sm-2">
+                    <input type="text" class="form-control form-control-sm" name="kamar_no" id="kamar_no" value="<?= @$main['kamar_no'] ?>" required>
                   </div>
                 </div>
                 <div class="form-group row mb-1">

@@ -82,4 +82,20 @@ class M_user extends CI_Model
       $this->db->where('user_id', $id)->update('user', $data);
     }
   }
+
+  public function all_data_by_role_name($role_name)
+  {
+    $where = "WHERE a.is_deleted = 0 ";
+    $where .= "AND b.role_name = '$role_name' ";
+
+    $sql = "SELECT 
+              a.*,
+              b.role_name 
+            FROM user a 
+            JOIN role b ON a.role_id = b.role_id
+              $where 
+            ORDER BY created_at";
+    $query = $this->db->query($sql);
+    return $query->result_array();
+  }
 }

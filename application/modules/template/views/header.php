@@ -179,7 +179,7 @@
         showDropdowns: true,
         locale: {
           cancelLabel: 'Clear',
-          format: 'DD-MM-YYYY H:mm:ss'
+          format: 'DD-MM-YYYY HH:mm:ss'
         },
         isInvalidDate: function(date) {
           return '';

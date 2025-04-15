@@ -29,7 +29,7 @@ class M_lokasi extends CI_Model
   {
     $where = "WHERE a.is_deleted = 0 ";
 
-    $sql = "SELECT * FROM lokasi a $where ORDER BY created_at";
+    $sql = "SELECT * FROM lokasi a $where ORDER BY lokasi_name";
     $query = $this->db->query($sql);
     return $query->result_array();
   }
