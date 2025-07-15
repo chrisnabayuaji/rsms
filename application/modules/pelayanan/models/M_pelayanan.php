@@ -57,7 +57,16 @@ class M_pelayanan extends CI_Model
 
   function by_field($field, $val)
   {
-    $sql = "SELECT * FROM pelayanan WHERE $field = ?";
+    $sql = "SELECT 
+              a.*,
+              b.lokasi_name AS bangsal_name,
+              c.user_fullname AS dpjp_name,
+              d.user_fullname AS residen_name 
+            FROM pelayanan a 
+            JOIN lokasi b ON a.bangsal_id = b.lokasi_id
+            JOIN user c ON a.dpjp_id = c.user_id
+            JOIN user d ON a.residen_id = d.user_id
+            WHERE $field = ?";
     $query = $this->db->query($sql, array($val));
     $row = $query->row_array();
     return $row;

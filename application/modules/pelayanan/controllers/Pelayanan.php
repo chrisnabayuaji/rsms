@@ -67,6 +67,22 @@ class Pelayanan extends MY_Controller
     $this->render('form', $data);
   }
 
+  public function detail($id)
+  {
+    ($id == null) ? authorize($this->menu, '_create') : authorize($this->menu, '_update');
+    if ($id == null) {
+      create_log(2, $this->menu['menu_name']);
+      $data['main'] = null;
+    }
+    $data['main'] = $this->m_pelayanan->by_field('pelayanan_id', $id);
+    $data['id'] = $id;
+    $data['menu'] = $this->menu;
+    $data['all_dpjp'] = $this->m_user->all_data_by_role_name('DPJP');
+    $data['all_residen'] = $this->m_user->all_data_by_role_name('RESIDEN');
+    $data['all_lokasi'] = $this->m_lokasi->all_data();
+    $this->render('detail', $data);
+  }
+
   public function save($id = null)
   {
     ($id == null) ? authorize($this->menu, '_create') : authorize($this->menu, '_update');

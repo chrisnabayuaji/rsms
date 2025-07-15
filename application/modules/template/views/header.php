@@ -69,6 +69,8 @@
   <!-- <script src="<?= base_url() ?>plugins/jquery-chained/jquery.chained.remote.min.js"></script> -->
   <!-- overlayScrollbars -->
   <script src="<?= base_url() ?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- Freeze Table -->
+  <script src="<?= base_url() ?>plugins/freeze-table/freeze-table.js"></script>
   <!-- DataTables -->
   <script src="<?= base_url() ?>plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="<?= base_url() ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>

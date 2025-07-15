@@ -121,7 +121,7 @@
                                 <td><?= $r['kamar_no'] ?></td>
                                 <td><?= $r['rm_no'] ?></td>
                                 <td><?= $r['pasien_name'] ?></td>
-                                <td><?= $r['umur_thn'] ?> Th <?= $r['umur_bln'] ?> Bl <?= $r['umur_hr'] ?> Hr</span></td>
+                                <td><?= $r['umur_thn'] ?> Th <?= $r['umur_bln'] ?> Bl <?= $r['umur_hr'] ?> Hr</td>
                                 <td><?= $r['dpjp_name'] ?></td>
                                 <td><?= $r['residen_name'] ?></td>
                                 <td class="text-center td-status">
